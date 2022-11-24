@@ -38,7 +38,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter App')
+        title: Text('Flutter App'),
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.add))
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -56,7 +61,12 @@ class _MyHomePageState extends State<MyHomePage> {
             UserTransaction()
           ],
         ),
-      )
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {  },
+        child: Icon(Icons.add),
+      ),
       // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
