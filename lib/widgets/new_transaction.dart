@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class NewTransaction extends StatefulWidget {
-  NewTransaction({Key? key, required this.addTx}) : super(key: key);
+  const NewTransaction({Key? key, required this.addTx}) : super(key: key);
 
   final Function addTx;
 
@@ -11,8 +12,9 @@ class NewTransaction extends StatefulWidget {
 
 class _NewTransactionState extends State<NewTransaction> {
   final TextEditingController titleController = TextEditingController();
-
   final TextEditingController amountController = TextEditingController();
+  late DateTime _selectedDate = DateTime.now();
+
 
   void submitData() {
     final enteredTitle = titleController.text;
@@ -26,6 +28,22 @@ class _NewTransactionState extends State<NewTransaction> {
     );
 
     Navigator.of(context).pop();
+  }
+
+  void _persentDatePicker() {
+    showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2019),
+        lastDate: DateTime.now()
+    ).then((value) {
+      if(value == null) {
+        return;
+      }
+      setState(() {
+        _selectedDate = value;
+      });
+    });
   }
 
   @override
@@ -50,6 +68,20 @@ class _NewTransactionState extends State<NewTransaction> {
               controller:  amountController,
               keyboardType: TextInputType.number,
               onSubmitted: (_) => submitData(),
+            ),
+            Container(
+              height: 70,
+              child: Row(
+                children: [
+                  Expanded(
+                      child: Text(_selectedDate == null ? 'No Date Chosen!' : 'Pick Date: ${DateFormat.yMd().format(_selectedDate)}')
+                  ),
+                  TextButton(
+                      onPressed: _persentDatePicker,
+                      child: Text('Choose Date')
+                  )
+                ],
+              ),
             ),
             ElevatedButton(
               onPressed: submitData,
