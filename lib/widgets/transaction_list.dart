@@ -6,10 +6,13 @@ import '../models/transaction.dart';
 class TransactionList extends StatelessWidget {
    const TransactionList({
      Key? key,
+     required this.deleteTx,
      required this.transactions
    }) : super(key: key);
 
    final List<Transaction> transactions;
+   final Function deleteTx;
+
 
 
   @override
@@ -33,6 +36,12 @@ class TransactionList extends StatelessWidget {
               ),
               title: Text(transactions[index].title, style: Theme.of(context).textTheme.titleMedium,),
               subtitle: Text(DateFormat.yMMMd().format(transactions[index].date)),
+              trailing: IconButton(
+                onPressed: () {
+                  deleteTx(transactions[index].id);
+                },
+                icon: Icon(Icons.delete, color: Colors.red,),
+              ),
             ),
           );
         },
