@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:personal_expenses_flutter/widgets/user_transaction.dart';
+import 'package:personal_expenses_flutter/widgets/new_transaction.dart';
+import 'package:personal_expenses_flutter/widgets/transaction_list.dart';
+
+import 'models/transaction.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,8 +34,69 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  final List<Transaction> _userTransaction = [
+    Transaction(
+        id: 't1',
+        title: 'New Shoes',
+        amount: 69.99,
+        date: DateTime.now()
+    ),
+    Transaction(
+        id: 't2',
+        title: 'weekly Groceries',
+        amount: 69.99,
+        date: DateTime.now()
+    ),
+    Transaction(
+        id: 't3',
+        title: 'weekly Groceries',
+        amount: 69.99,
+        date: DateTime.now()
+    ),
+    Transaction(
+        id: 't4',
+        title: 'weekly Groceries',
+        amount: 69.99,
+        date: DateTime.now()
+    ),
+    Transaction(
+        id: 't5',
+        title: 'weekly Groceries',
+        amount: 69.99,
+        date: DateTime.now()
+    ),
+    Transaction(
+        id: 't6',
+        title: 'weekly Groceries',
+        amount: 69.99,
+        date: DateTime.now()
+    ),
+    Transaction(
+        id: 't7',
+        title: 'weekly Groceries',
+        amount: 69.99,
+        date: DateTime.now()
+    ),
+    Transaction(
+        id: 't8',
+        title: 'weekly Groceries',
+        amount: 69.99,
+        date: DateTime.now()
+    ),
+  ];
 
+  void _addNewTransaction(String txTitle, double txAmount){
+    final newTx = Transaction(id: DateTime.now().toString(), title: txTitle, amount: txAmount, date: DateTime.now());
+    setState(() {
+      _userTransaction.add(newTx);
+    });
+  }
 
+  void _startAddNewTransaction(BuildContext ctx) {
+    showModalBottomSheet(context: ctx, builder: (_) {
+      return NewTransaction(addTx: _addNewTransaction);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +105,9 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('Flutter App'),
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                _startAddNewTransaction(context);
+              },
               icon: Icon(Icons.add))
         ],
       ),
@@ -58,13 +124,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Text('CHART!'),
               ),
             ),
-            UserTransaction()
+            TransactionList(transactions: _userTransaction,)
           ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {  },
+        onPressed: () {
+          _startAddNewTransaction(context);
+        },
         child: Icon(Icons.add),
       ),
       // This trailing comma makes auto-formatting nicer for build methods.
