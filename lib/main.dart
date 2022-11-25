@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Personal Expenses',
       theme: ThemeData(
         primarySwatch: Colors.purple,
+        fontFamily: 'OpenSans',
       ),
       home: const MyHomePage(),
     );
@@ -35,54 +36,54 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   final List<Transaction> _userTransaction = [
-    Transaction(
-        id: 't1',
-        title: 'New Shoes',
-        amount: 69.99,
-        date: DateTime.now()
-    ),
-    Transaction(
-        id: 't2',
-        title: 'weekly Groceries',
-        amount: 69.99,
-        date: DateTime.now()
-    ),
-    Transaction(
-        id: 't3',
-        title: 'weekly Groceries',
-        amount: 69.99,
-        date: DateTime.now()
-    ),
-    Transaction(
-        id: 't4',
-        title: 'weekly Groceries',
-        amount: 69.99,
-        date: DateTime.now()
-    ),
-    Transaction(
-        id: 't5',
-        title: 'weekly Groceries',
-        amount: 69.99,
-        date: DateTime.now()
-    ),
-    Transaction(
-        id: 't6',
-        title: 'weekly Groceries',
-        amount: 69.99,
-        date: DateTime.now()
-    ),
-    Transaction(
-        id: 't7',
-        title: 'weekly Groceries',
-        amount: 69.99,
-        date: DateTime.now()
-    ),
-    Transaction(
-        id: 't8',
-        title: 'weekly Groceries',
-        amount: 69.99,
-        date: DateTime.now()
-    ),
+    // Transaction(
+    //     id: 't1',
+    //     title: 'New Shoes',
+    //     amount: 69.99,
+    //     date: DateTime.now()
+    // ),
+    // Transaction(
+    //     id: 't2',
+    //     title: 'weekly Groceries',
+    //     amount: 69.99,
+    //     date: DateTime.now()
+    // ),
+    // Transaction(
+    //     id: 't3',
+    //     title: 'weekly Groceries',
+    //     amount: 69.99,
+    //     date: DateTime.now()
+    // ),
+    // Transaction(
+    //     id: 't4',
+    //     title: 'weekly Groceries',
+    //     amount: 69.99,
+    //     date: DateTime.now()
+    // ),
+    // Transaction(
+    //     id: 't5',
+    //     title: 'weekly Groceries',
+    //     amount: 69.99,
+    //     date: DateTime.now()
+    // ),
+    // Transaction(
+    //     id: 't6',
+    //     title: 'weekly Groceries',
+    //     amount: 69.99,
+    //     date: DateTime.now()
+    // ),
+    // Transaction(
+    //     id: 't7',
+    //     title: 'weekly Groceries',
+    //     amount: 69.99,
+    //     date: DateTime.now()
+    // ),
+    // Transaction(
+    //     id: 't8',
+    //     title: 'weekly Groceries',
+    //     amount: 69.99,
+    //     date: DateTime.now()
+    // ),
   ];
 
   void _addNewTransaction(String txTitle, double txAmount){
